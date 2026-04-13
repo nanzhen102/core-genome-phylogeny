@@ -1,6 +1,6 @@
 # core-genome-phylogeny
 
-A Nextflow pipeline for core-genome phylogenetic tree building of bacterial genomes. | Nanzhen Qiao (nanzhen.qiao@gmail.com)
+A Nextflow pipeline for core-genome phylogenetic tree building of bacterial genomes. 
 
 ## Overview
 This pipeline automates genome download, annotation, pan-genome analysis,
@@ -63,4 +63,5 @@ If core genes > 1000 at genus level, identity may be too high.
 - [ ] Family-level tree support using single-copy marker genes
 - [ ] QC integration (CheckM, fastANI species validation)
 
-
+## Author
+Nanzhen Qiao (nanzhen.qiao@gmail.com) | 20260413
