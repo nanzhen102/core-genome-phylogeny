@@ -26,8 +26,21 @@ process ROARY {
         -p ${task.cpus} \
         -i ${params.identity} \
         *.gff
+    
+    # ── Core gene count check ─────────────────────────────────
+    CORE_GENES=\$(grep "Core genes" roary_out/summary_statistics.txt | awk '{print \$NF}')
+    echo "Core genes found: \$CORE_GENES (identity=${params.identity}%)"
 
-    echo "Core genes found:"
-    head -1 roary_out/summary_statistics.txt
+    if [ "\$CORE_GENES" -lt 50 ]; then
+        echo "WARNING: Very few core genes (\$CORE_GENES) found at identity=${params.identity}%"
+        echo "WARNING: Consider lowering --identity (e.g. --identity 50)"
+        echo "WARNING: Tree may not be reliable with fewer than 50 core genes"
+    elif [ "\$CORE_GENES" -lt 100 ]; then
+        echo "NOTICE: Low core gene count (\$CORE_GENES) at identity=${params.identity}%"
+        echo "NOTICE: Consider lowering --identity if this seems unexpected"
+    else
+        echo "OK: Core gene count looks good (\$CORE_GENES genes)"
+    fi
     """
-}
+}    
+    
