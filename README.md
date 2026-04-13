@@ -4,7 +4,9 @@ A Nextflow pipeline for core-genome phylogenetic tree building of bacterial geno
 
 ## Overview
 This pipeline automates genome download, annotation, pan-genome analysis,
-and maximum-likelihood tree inference for any bacterial genus (Note: Currently designed for genus-level analysis; family-level support is planned).
+and maximum-likelihood tree inference for any bacterial genus.
+
+*Note: Currently designed for genus-level analysis; family-level support is planned.*
 
 ## Pipeline steps
 1. Genome download (NCBI datasets CLI)
@@ -20,9 +22,9 @@ and maximum-likelihood tree inference for any bacterial genus (Note: Currently d
 ## Input file format
 Both input files must be CSV with a header line:
 
-`inputs/accessions.csv` — target genomes. Header `accession`; e.g. `GCA_001435135.1`
+- `inputs/accessions.csv` — target genomes. Header `accession`; e.g. `GCA_001435135.1`
 
-`inputs/outgroup.csv` — one or more outgroup genomes.  Header `accession`; e.g. `GCA_001435135.1`
+- `inputs/outgroup.csv` — one or more outgroup genomes.  Header `accession`; e.g. `GCA_001435135.1`
 
 
 ## Usage
