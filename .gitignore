@@ -7,3 +7,11 @@ work/
 *.fna
 *.faa
 *.gff
+
+# Project-specific inputs (not part of pipeline)
+inputs/accessions.csv
+inputs/outgroup.csv
+
+# Keep test files (required for -profile test)
+!inputs/test_accessions.csv
+!inputs/test_outgroup.csv
