@@ -47,6 +47,17 @@ nextflow run main.nf -profile slurm,test
 nextflow run main.nf -profile slurm -resume
 ```
 
+### Choosing the right `--identity` value
+
+| Taxonomic level | Recommended identity | Expected core genes |
+|-----------------|---------------------|---------------------|
+| Species | 95% (Roary default) | 500–2000 |
+| Genus | 60–80% | 100–500 |
+| Family | 40–60% | 50–200 |
+
+If core genes < 50, lower `--identity` by 10% and rerun with `-resume`.
+If core genes > 1000 at genus level, identity may be too high — raise it.
+
 ## Planned features
 - [ ] Automatic core gene count check with recommended identity adjustment
 - [ ] Family-level tree support using single-copy marker genes
