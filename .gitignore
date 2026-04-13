@@ -1,0 +1,9 @@
+results/
+work/
+.nextflow/
+.nextflow.log*
+*.zip
+*.log
+*.fna
+*.faa
+*.gff
