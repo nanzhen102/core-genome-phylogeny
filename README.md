@@ -47,7 +47,7 @@ nextflow run main.nf -profile slurm -resume --identity 70
 
 ```
 
-### Choosing the right `--identity` value
+**Choosing the right `--identity` value**
 
 | Taxonomic level | Recommended identity | Expected core genes |
 |-----------------|---------------------|---------------------|
