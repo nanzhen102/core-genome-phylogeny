@@ -24,27 +24,25 @@ Both input files must be CSV with a header line:
 
 `inputs/outgroup.csv` — one or more outgroup genomes.  Header `accession`; e.g. `GCA_001435135.1`
 
-## Key parameters
-| Parameter  | Default | Description                                      |
-|------------|---------|--------------------------------------------------|
-| accessions | —       | CSV file of GenBank accession numbers            |
-| outgroup   | —       | CSV file with one or more outgroup accessions    |
-| identity   | 60      | Roary blastp identity cutoff (%). The default Roary cutoff (95%) may yield no core genes at genus level — 60% is recommended as a starting point. Adjust based on the number of core genes recovered. |
-| outdir     | results | Output directory                                 |  
 
 ## Usage
 ```bash
+# Quick test with 3 genomes. 
+nextflow run main.nf -profile slurm,test
+
 # On any SLURM cluster (ComputeCanada/CCDB, Queen's CAC, etc.)
 nextflow run main.nf -profile slurm \
   --accessions inputs/accessions.csv \
   --outgroup inputs/outgroup.csv \
   --outdir results
 
-# Quick test with 3 genomes
-nextflow run main.nf -profile slurm,test
-
 # Resume after interruption
 nextflow run main.nf -profile slurm -resume
+
+# Default `--identity` value is 60%
+# Override for a different genus
+nextflow run main.nf -profile slurm -resume --identity 70
+
 ```
 
 ### Choosing the right `--identity` value
