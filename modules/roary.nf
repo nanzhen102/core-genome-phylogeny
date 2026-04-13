@@ -1,6 +1,7 @@
 process ROARY {
     tag "roary_identity${params.identity}"
-    publishDir "${params.outdir}/roary", mode: 'copy'
+    publishDir "${params.outdir}/roary", mode: 'copy',
+    	saveAs: { filename -> filename.replace("roary_out/", "") }
 
     conda "conda-forge::parallel bioconda::roary=3.13.0"
 
@@ -12,7 +13,7 @@ process ROARY {
     output:
     path "roary_out/core_gene_alignment.aln", emit: alignment
     path "roary_out/summary_statistics.txt",  emit: stats
-    path "roary_out/",                        emit: outdir
+    path "roary_out/*",                        emit: outdir
 
     script:
     """
