@@ -12,6 +12,15 @@ and maximum-likelihood tree inference for any bacterial genus (Note: Currently d
 3. Pan-genome + core alignment (Roary)
 4. Phylogenetic tree (FastTree, GTR+CAT model)
 
+## Requirements
+- Nextflow ≥ 23.04
+- Conda (for automatic dependency management)
+- SLURM (for HPC execution) or local execution
+
+## Input file format
+Both input files must be CSV with a header line:
+`inputs/accessions.csv` — target genomes. Header `accession`; e.g. `GCA_001435135.1`
+`inputs/outgroup.csv` — one or more outgroup genomes.  Header `accession`; e.g. `GCA_001435135.1`
 
 ## Key parameters
 | Parameter  | Default | Description                                      |
@@ -23,14 +32,17 @@ and maximum-likelihood tree inference for any bacterial genus (Note: Currently d
 
 ## Usage
 ```bash
-# On any SLURM cluster (ComputeCanada, Queen's CAC, etc.)
+# On any SLURM cluster (ComputeCanada/CCDB, Queen's CAC, etc.)
 nextflow run main.nf -profile slurm \
   --accessions inputs/accessions.csv \
   --outgroup inputs/outgroup.csv \
   --outdir results
 
-# Local testing
-nextflow run main.nf -profile local,test
+# Quick test with 3 genomes
+nextflow run main.nf -profile slurm,test
+
+# Resume after interruption
+nextflow run main.nf -profile slurm -resume
 ```
 
 ## Planned features
