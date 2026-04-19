@@ -16,7 +16,7 @@ and maximum-likelihood tree inference for any bacterial genus.
 
 ## Requirements
 - Nextflow ≥ 23.04
-- Conda (for automatic dependency management)
+- Conda **or** Docker **or** Singularity (for dependency management)
 - SLURM (for HPC execution) or local execution
 
 ## Input file format
@@ -32,11 +32,21 @@ Both input files must be CSV with a header line:
 # Quick test with 3 genomes. 
 nextflow run main.nf -profile slurm,test
 
-# On any SLURM cluster (ComputeCanada/CCDB, Queen's CAC, etc.)
+# Full run on SLURM with conda (default)
 nextflow run main.nf -profile slurm \
   --accessions inputs/accessions.csv \
   --outgroup inputs/outgroup.csv \
   --outdir results
+
+# Full run with Singularity (recommended on HPC)
+nextflow run main.nf -profile slurm,singularity \
+  --accessions inputs/accessions.csv \
+  --outgroup inputs/outgroup.csv
+
+# Full run with Docker (recommended locally)
+nextflow run main.nf -profile local,docker \
+  --accessions inputs/accessions.csv \
+  --outgroup inputs/outgroup.csv
 
 # Resume after interruption
 nextflow run main.nf -profile slurm -resume
@@ -62,6 +72,8 @@ If core genes > 1000 at genus level, identity may be too high.
 ## Planned features
 - [ ] Family-level tree support using single-copy marker genes
 - [ ] QC integration (CheckM, fastANI species validation)
+- [ ] Cloud execution support (AWS Batch, GCP Life Sciences)
+
 
 ## Author
 Nanzhen Qiao (nanzhen.qiao@gmail.com) | 20260413
