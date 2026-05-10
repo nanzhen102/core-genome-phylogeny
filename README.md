@@ -6,7 +6,7 @@ A Nextflow pipeline for core-genome phylogenetic tree building of bacterial geno
 This pipeline automates genome download, annotation, pan-genome analysis,
 and maximum-likelihood tree inference for any bacterial genus.
 
-*Note: Currently designed for genus-level analysis; family-level support is planned.*
+*Note: Currently designed for genus-level analysis; scripts for family-level analysis is in `Family_level_tree/`.*
 
 ## Pipeline steps
 1. Genome download (NCBI datasets CLI)
@@ -70,7 +70,6 @@ If core genes < 50, lower `--identity` by 10% and rerun with `-resume`.
 If core genes > 1000 at genus level, identity may be too high.
 
 ## Planned features
-- [ ] Family-level tree support using single-copy marker genes
 - [ ] QC integration (CheckM, fastANI species validation)
 - [ ] Cloud execution support (AWS Batch, GCP Life Sciences)
 
